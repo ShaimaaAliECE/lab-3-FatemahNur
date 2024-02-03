@@ -6,14 +6,26 @@ using System.Threading.Tasks;
 
 namespace Lab3App
 {
-    public abstract class Tool : Collectable
+    public class Tool : Collectable
     {
-        public abstract void DoAction();
+        private String name;
+
+        public Tool(String name)
+        {
+            this.name = name;
+        }
+        public virtual void DoAction()
+        {
+
+        }
 
         public override void AddMe(List<Collectable> list)
         {
-            base.AddMe(list);
+            list.Add(this);
+            Console.WriteLine($"{name} Collected, Congrats!!!!");
             DoAction();
         }
+
+
     }
 }

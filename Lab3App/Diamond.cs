@@ -1,22 +1,28 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
 
 namespace Lab3App
 {
     public class Diamond : Treasure
     {
-        public Diamond(string name, int score)
+        private int Score;
+        private String Name;
+
+        public Diamond(String name, int score) : base(name, score)
         {
-            this.description = name;
-            this.score = score;
+            this.Score = score;
+            this.Name = name;
         }
+
         public override void Display()
         {
-            Console.WriteLine("Diamond " + this.description + " is displayed");
+            Console.WriteLine($"Diamond{Name} is displayed");
         }
+
     }
 }

@@ -3,34 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Lab3App
 {
     public class Coin : Treasure
     {
+        private int Value;
+        private int Score;
+        private String Name;
 
-        public int value;
-
-        public Coin(string material, int score, int value)
+        public Coin(String name, int score, int value) : base(name, score)
         {
-            this.value = value;
-            this.description = material;
-            this.score = score;
-        }
-        public override void Display()
-        {
-            Console.WriteLine("Coin " + this.description + " is displayed");
-        }
-
-        public void UpdateTotalValue()
-        {
-            board.totalValue += this.value;
+            Name = name;
+            Score = score;
+            Value = value;
         }
 
         public override void AddMe(List<Collectable> list)
         {
-            base.AddMe(list);
+            list.Add(this);
+            Console.WriteLine($"{Name} Collected, Congrats!!!!");
+            UpdateTotalScore();
             UpdateTotalValue();
+        }
+
+        public void UpdateTotalValue()
+        {
+            Board.TotalValue += Value;
+            Console.WriteLine($"Total Value is updated to: {Board.TotalValue}");
+        }
+
+        public override void Display()
+        {
+            Console.WriteLine($"Coin {Name} is displayed");
         }
 
     }
